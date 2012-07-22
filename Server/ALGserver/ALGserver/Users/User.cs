@@ -52,7 +52,7 @@ namespace ALGserver.Users
                 return;
             }
 
-            CommandManager.Instance.Parse(Request).Execute();
+            CommandManager.Instance.Parse(Request.Replace("\r\n\r\n", string.Empty)).Execute();
 
             UserManager.Instance.AddUser(this);
             

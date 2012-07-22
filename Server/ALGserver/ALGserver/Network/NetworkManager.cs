@@ -43,7 +43,7 @@ namespace ALGserver
         TcpListener Listener; // Объект, принимающий TCP-клиентов
 
 
-        public bool Start(int Port)
+        public bool Start()
         {
             Listener = new TcpListener(IPAddress.Any, Settings.Port); // Создаем "слушателя" для указанного порта
             Listener.Start(); // Запускаем его
