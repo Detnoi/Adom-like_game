@@ -52,9 +52,12 @@ namespace ALGserver.Users
                 return;
             }
 
-            CommandManager.Instance.Parse(Request.Replace("\r\n\r\n", string.Empty)).Execute();
+            CommandObjectParams userCreatedParams = new CommandObjectParams();
+            userCreatedParams.Add(this);
 
-            UserManager.Instance.AddUser(this);
+            CommandManager.Instance.Parse(Request.Replace("\r\n\r\n", string.Empty), userCreatedParams).Execute();
+
+            
             
         }
     }

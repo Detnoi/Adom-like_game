@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ALGserver.Global;
 
 namespace ALGserver.Commands
 {
@@ -26,9 +27,40 @@ namespace ALGserver.Commands
             }
         }
 
-        public Command Parse(string Message)
+        public Command Parse(string message, CommandObjectParams referencedObjects )
         {
-            return new EmptyCommand();
+            string commandName = string.Empty;
+            List<string> comandParams = new List<string>();
+            string tmpParceCommand = string.Empty;
+            for (int i = 0; i < message.Length; i++)
+            {
+                if(message[i]==Settings.RequestLineBreakerChar)
+                {
+                    if(commandName==string.Empty)
+                    {
+                        commandName = tmpParceCommand;
+                    }
+                    else
+                    {
+                        comandParams.Add(tmpParceCommand);
+                    }
+
+                    tmpParceCommand = string.Empty;
+                    continue;
+                }
+                else
+                {
+                    tmpParceCommand += message[i];
+                }
+            }
+
+            switch (commandName)
+            {
+                default:
+                    {
+                        return new EmptyCommand(comandParams, referencedObjects);
+                    }
+            }
         }
     }
 }

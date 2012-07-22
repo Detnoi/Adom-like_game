@@ -15,5 +15,7 @@ namespace ALGserver.Global
 
         public static int MaxRequestLength = 4096;
 
+        public static char RequestLineBreakerChar = '*';
+
     }
 }

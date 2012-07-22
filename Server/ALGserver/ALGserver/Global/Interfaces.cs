@@ -9,6 +9,7 @@ namespace ALGserver.Global
         interface ICommand
         {
             void Execute();
+            
         }
 
         #region map
